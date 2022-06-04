@@ -5,7 +5,7 @@ const path = __dirname + '/app/views/';
 const app = express();
 app.use(express.static(path));
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "https://wiser-student-system.herokuapp.com"
 };
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
