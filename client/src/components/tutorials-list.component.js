@@ -160,7 +160,7 @@ export default class TutorialsList extends Component {
                 <label>
                   <strong>Status:</strong>
                 </label>{" "}
-                {currentTutorial.published ? "Published" : "Pending"}
+                {currentTutorial.published ? "Graduated" : "In School"}
               </div>
 
               <Link
