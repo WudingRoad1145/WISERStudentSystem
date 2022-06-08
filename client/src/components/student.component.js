@@ -53,7 +53,7 @@ export default class Student extends Component {
   }
 
   onChangeGraduationYear(e) {
-    const form = e.target.value;
+    const graduationYear = e.target.value;
     
     this.setState(prevState => ({
       currentstudent: {
