@@ -14,6 +14,7 @@ exports.create = (req, res) => {
     const student_info = {
       name: req.body.name,
       form: req.body.form,
+      graduationYear: req.body.graduationYear,
       graduated: req.body.graduated ? req.body.graduated : false
     };
     // Save student in the database

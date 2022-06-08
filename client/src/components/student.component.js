@@ -6,6 +6,7 @@ export default class Student extends Component {
     super(props);
     this.onChangename = this.onChangename.bind(this);
     this.onChangeForm = this.onChangeForm.bind(this);
+    this.onChangeGraduationYear = this.onChangeGraduationYear.bind(this);
     this.getstudent = this.getstudent.bind(this);
     this.updateGraduated = this.updateGraduated.bind(this);
     this.updatestudent = this.updatestudent.bind(this);
@@ -16,6 +17,7 @@ export default class Student extends Component {
         id: null,
         name: "",
         form: "",
+        graduationYear: "",
         graduated: false
       },
       message: ""
@@ -50,6 +52,17 @@ export default class Student extends Component {
     }));
   }
 
+  onChangeGraduationYear(e) {
+    const form = e.target.value;
+    
+    this.setState(prevState => ({
+      currentstudent: {
+        ...prevState.currentstudent,
+        graduationYear: graduationYear
+      }
+    }));
+  }
+
   getstudent(id) {
     studentDataService.get(id)
       .then(response => {
@@ -68,6 +81,7 @@ export default class Student extends Component {
       id: this.state.currentstudent.id,
       name: this.state.currentstudent.name,
       form: this.state.currentstudent.form,
+      graduationYear:this.state.currentstudent.graduationYear,
       graduated: status
     };
 
@@ -140,6 +154,16 @@ export default class Student extends Component {
                   id="form"
                   value={currentstudent.form}
                   onChange={this.onChangeForm}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="graduationYear">Graduation Year</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="graduationYear"
+                  value={currentstudent.graduationYear}
+                  onChange={this.onChangeGraduationYear}
                 />
               </div>
 

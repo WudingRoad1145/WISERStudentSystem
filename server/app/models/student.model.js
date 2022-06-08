@@ -6,6 +6,9 @@ module.exports = (sequelize, Sequelize) => {
       form: {
         type: Sequelize.STRING
       },
+      graduationYear:{
+        type: Sequelize.STRING
+      },
       graduated: {
         type: Sequelize.BOOLEAN
       }

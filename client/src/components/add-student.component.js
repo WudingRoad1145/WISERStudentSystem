@@ -6,6 +6,7 @@ export default class Addstudent extends Component {
     super(props);
     this.onChangename = this.onChangename.bind(this);
     this.onChangeForm = this.onChangeForm.bind(this);
+    this.onChangeGraduationYear = this.onChangeGraduationYear(this);
     this.savestudent = this.savestudent.bind(this);
     this.newstudent = this.newstudent.bind(this);
 
@@ -13,8 +14,8 @@ export default class Addstudent extends Component {
       id: null,
       name: "",
       form: "", 
+      graduationYear: "",
       graduated: false,
-
       submitted: false
     };
   }
@@ -31,10 +32,17 @@ export default class Addstudent extends Component {
     });
   }
 
+  onChangeGraduationYear(e) {
+    this.setState({
+      graduationYear: e.target.value
+    });
+  }
+
   savestudent() {
     var data = {
       name: this.state.name,
-      form: this.state.form
+      form: this.state.form,
+      graduationYear: this.state.graduationYear
     };
 
     studentDataService.create(data)
@@ -43,6 +51,7 @@ export default class Addstudent extends Component {
           id: response.data.id,
           name: response.data.name,
           form: response.data.form,
+          graduationYear: response.data.graduationYear,
           graduated: response.data.graduated,
 
           submitted: true
@@ -59,6 +68,7 @@ export default class Addstudent extends Component {
       id: null,
       name: "",
       form: "",
+      graduationYear: "",
       graduated: false,
 
       submitted: false
@@ -100,6 +110,19 @@ export default class Addstudent extends Component {
                 value={this.state.form}
                 onChange={this.onChangeForm}
                 name="form"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="graduationYear">Graduation Year</label>
+              <input
+                type="text"
+                className="form-control"
+                id="graduationYear"
+                required
+                value={this.state.graduationYear}
+                onChange={this.onChangeGraduationYear}
+                name="graduationYear"
               />
             </div>
 
