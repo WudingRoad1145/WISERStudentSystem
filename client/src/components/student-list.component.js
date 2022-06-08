@@ -128,7 +128,7 @@ export default class StudentsList extends Component {
                   onClick={() => this.setActivestudent(student, index)}
                   key={index}
                 >
-                  {student.id} {student.name} {student.form} {student.graduationYear}
+                  {student.id} {student.name} Form:{student.form} {student.graduationYear}
                 </li>
               ))}
           </ul>
