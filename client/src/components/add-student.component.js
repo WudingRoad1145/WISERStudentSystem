@@ -6,7 +6,7 @@ export default class Addstudent extends Component {
     super(props);
     this.onChangename = this.onChangename.bind(this);
     this.onChangeForm = this.onChangeForm.bind(this);
-    this.onChangeGraduationYear = this.onChangeGraduationYear(this);
+    this.onChangeGraduationYear = this.onChangeGraduationYear.bind(this);
     this.savestudent = this.savestudent.bind(this);
     this.newstudent = this.newstudent.bind(this);
 
