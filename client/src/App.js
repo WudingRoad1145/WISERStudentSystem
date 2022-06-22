@@ -3,9 +3,12 @@ import { Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
-import Addstudent from "./components/add-student.component";
+import addStudent from "./components/add-student.component";
 import student from "./components/student.component";
 import studentsList from "./components/student-list.component";
+import teacherLogin from "./components/authentication";
+import addReport from "./components/addReport";
+import analytics from "./components/analytics";
 
 class App extends Component {
   render() {
@@ -22,8 +25,13 @@ class App extends Component {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to={"/add"} className="nav-link">
-                Add
+              <Link to={"/analytics"} className="nav-link">
+                Analytics
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"/addReport"} className="nav-link">
+                Add Report
               </Link>
             </li>
           </div>
@@ -31,8 +39,11 @@ class App extends Component {
 
         <div className="container mt-3">
           <Switch>
-            <Route exact path={["/", "/students"]} component={studentsList} />
-            <Route exact path="/add" component={Addstudent} />
+            <Route exact path={"/"} component={teacherLogin}/>
+            <Route exact path={"/students"} component={studentsList} />
+            <Route exact path="/addStudents" component={addStudent} />
+            <Route exact path="/addReport" component={addReport} />
+            <Route path="/analytics" component={analytics} />
             <Route path="/students/:id" component={student} />
           </Switch>
         </div>
