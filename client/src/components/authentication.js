@@ -99,7 +99,8 @@ export default class teacherLogin extends Component {
             <div className="submit-form">
                 {this.state.submitted ? (
                     <div>
-                        <h4>You registered successfully!</h4>
+                        <h2>Kalibu, Teacher!</h2>
+                        <p>Education is life.</p>
                         <Link
                             to={"/students"}
                             className="badge badge-warning"

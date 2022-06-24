@@ -28,6 +28,7 @@ class studentDataService {
   findByname(name) {
     return http.get(`/students?name=${name}`);
   }
+  
   findByGraduationYear(year) {
     return http.get(`/students?graduationYear=${year}`);
   }

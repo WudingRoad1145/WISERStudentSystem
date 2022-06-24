@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ed0a9aae.chunk.css",
+    "main.js": "/static/js/main.3b2c2866.chunk.js",
+    "main.js.map": "/static/js/main.3b2c2866.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.efee8004.js",
+    "runtime-main.js.map": "/static/js/runtime-main.efee8004.js.map",
+    "static/css/2.47e06e2e.chunk.css": "/static/css/2.47e06e2e.chunk.css",
+    "static/js/2.5184d70f.chunk.js": "/static/js/2.5184d70f.chunk.js",
+    "static/js/2.5184d70f.chunk.js.map": "/static/js/2.5184d70f.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.6607433e13b2d73361f394f3d05e337b.js": "/precache-manifest.6607433e13b2d73361f394f3d05e337b.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.47e06e2e.chunk.css.map": "/static/css/2.47e06e2e.chunk.css.map",
+    "static/css/main.ed0a9aae.chunk.css.map": "/static/css/main.ed0a9aae.chunk.css.map",
+    "static/js/2.5184d70f.chunk.js.LICENSE.txt": "/static/js/2.5184d70f.chunk.js.LICENSE.txt",
+    "static/media/wiser.jpg": "/static/media/wiser.25986481.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.efee8004.js",
+    "static/css/2.47e06e2e.chunk.css",
+    "static/js/2.5184d70f.chunk.js",
+    "static/css/main.ed0a9aae.chunk.css",
+    "static/js/main.3b2c2866.chunk.js"
+  ]
+}

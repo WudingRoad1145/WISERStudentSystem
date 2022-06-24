@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import studentDataService from "../services/student.service";
 
-export default class Addstudent extends Component {
+export default class addStudent extends Component {
   constructor(props) {
     super(props);
     this.onChangename = this.onChangename.bind(this);

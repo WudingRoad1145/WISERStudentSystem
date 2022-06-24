@@ -8,7 +8,10 @@ import student from "./components/student.component";
 import studentsList from "./components/student-list.component";
 import teacherLogin from "./components/authentication";
 import addReport from "./components/addReport";
+import addActivity from "./components/addActivity";
+import addGraduate from "./components/addGraduate";
 import analytics from "./components/analytics";
+import add from "./components/add";
 
 class App extends Component {
   render() {
@@ -30,8 +33,8 @@ class App extends Component {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to={"/addReport"} className="nav-link">
-                Add Report
+              <Link to={"/add"} className="nav-link">
+                Add Records
               </Link>
             </li>
           </div>
@@ -42,7 +45,10 @@ class App extends Component {
             <Route exact path={"/"} component={teacherLogin}/>
             <Route exact path={"/students"} component={studentsList} />
             <Route exact path="/addStudents" component={addStudent} />
+            <Route path="/add" component={add} />
             <Route exact path="/addReport" component={addReport} />
+            <Route exact path="/addActivity" component={addActivity} />
+            <Route exact path="/addGraduate" component={addGraduate} />
             <Route path="/analytics" component={analytics} />
             <Route path="/students/:id" component={student} />
           </Switch>

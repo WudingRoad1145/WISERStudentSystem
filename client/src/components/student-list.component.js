@@ -143,7 +143,7 @@ export default class StudentsList extends Component {
     ]
 
     return (
-      <div className="list row">
+      <div className="row">
         <div className="col-md-2">
           <div className="container">
             <div id="root">
@@ -201,7 +201,7 @@ export default class StudentsList extends Component {
             </div>
           </div>
 
-          <div className="list row">
+          <div className="row">
             <div className="col-md-5">
               <h4>All Students</h4>
 

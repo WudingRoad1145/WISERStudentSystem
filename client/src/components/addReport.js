@@ -1,58 +1,76 @@
 import React, { Component } from "react";
-import studentDataService from "../services/student.service";
+import reportDataService from "../services/report.service";
 
 export default class addReport extends Component {
   constructor(props) {
     super(props);
-    this.onChangename = this.onChangename.bind(this);
-    this.onChangeForm = this.onChangeForm.bind(this);
-    this.onChangeGraduationYear = this.onChangeGraduationYear.bind(this);
-    this.savestudent = this.savestudent.bind(this);
-    this.newstudent = this.newstudent.bind(this);
+    // need to add in select student
+    this.onChangeReportTime = this.onChangeReportTime.bind(this);
+    this.onChangeStudentid = this.onChangeStudentid.bind(this);
+    this.onChangeTitle = this.onChangeTitle.bind(this);
+    this.onChangeComments = this.onChangeComments.bind(this);
+    this.onChangeTeacher = this.onChangeTeacher.bind(this);
+    this.saveReport = this.saveReport.bind(this);
+    this.newReport = this.newReport.bind(this);
+    // need to add in time input year+term
 
     this.state = {
-      id: null,
-      name: "",
-      form: "", 
-      graduationYear: "",
-      graduated: false,
+      studentid: null,
+      title: "",
+      comments: "", 
+      teacher: "",
+      reportTime:"",
       submitted: false
     };
   }
 
-  onChangename(e) {
+  onChangeStudentid(e) {
     this.setState({
-      name: e.target.value
+      studentid: e.target.value
     });
   }
 
-  onChangeForm(e) {
+  onChangeTitle(e) {
     this.setState({
-      form: e.target.value
+      title: e.target.value
     });
   }
 
-  onChangeGraduationYear(e) {
+  onChangeComments(e) {
     this.setState({
-      graduationYear: e.target.value
+      comments: e.target.value
     });
   }
 
-  savestudent() {
+  onChangeTeacher(e) {
+    this.setState({
+      teacher: e.target.value
+    });
+  }
+
+  onChangeReportTime(e) {
+    this.setState({
+      reportTime: e.target.value
+    });
+  }
+
+  saveReport() {
     var data = {
-      name: this.state.name,
-      form: this.state.form,
-      graduationYear: this.state.graduationYear
+      studentid: this.state.studentid,
+      title: this.state.title,
+      comments: this.state.comments,
+      teacher: this.state.teacher,
+      reportTime: this.state.reportTime
     };
 
-    studentDataService.create(data)
+    reportDataService.create(data)
       .then(response => {
         this.setState({
-          id: response.data.id,
-          name: response.data.name,
-          form: response.data.form,
-          graduationYear: response.data.graduationYear,
-          graduated: response.data.graduated,
+          studentid: response.data.studentid,
+          title: response.data.title,
+          comments: response.data.comments,
+          teacher: response.data.teacher,
+          reportTime: response.data.reportTime,
 
           submitted: true
         });
@@ -63,13 +81,13 @@ export default class addReport extends Component {
       });
   }
 
-  newstudent() {
+  newReport() {
     this.setState({
-      id: null,
-      name: "",
-      form: "",
-      graduationYear: "",
-      graduated: false,
+      studentid: null,
+      title: "",
+      comments: "",
+      teacher: "",
+      reportTime:"",
 
       submitted: false
     });
@@ -80,55 +98,87 @@ export default class addReport extends Component {
       <div className="submit-form">
         {this.state.submitted ? (
           <div>
-            <h4>You submitted successfully!</h4>
-            <button className="btn btn-success" onClick={this.newstudent}>
+            <h4>Teacher's report added successfully!</h4>
+            <h4>Thank you, teacher!</h4>
+            <button className="btn btn-success" onClick={this.newReport}>
               Add
             </button>
           </div>
         ) : (
           <div>
             <div className="form-group">
-              <label htmlFor="name">Title</label>
+            <h3 htmlFor="report">Teacher's Report</h3>
+              <label htmlFor="reportTime">Report Time</label>
+              <p style={{ color: 'red',fontSize:'12px',margin:'0px' }}> Format: School Year and Term</p>
+              <p style={{ color: 'grey',fontSize:'12px',margin:'0px'  }}> Ex: School Year 2022 Term 1 then you input 202201</p>
               <input
                 type="text"
                 className="form-control"
-                id="name"
+                id="reportTime"
                 required
-                value={this.state.name}
-                onChange={this.onChangename}
-                name="name"
+                value={this.state.reportTime}
+                onChange={this.onChangeReportTime}
+                name="reportTime"
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="form">Award</label>
+              <label htmlFor="studentid">Student ID</label>
               <input
                 type="text"
                 className="form-control"
-                id="form"
+                id="studentid"
                 required
-                value={this.state.form}
-                onChange={this.onChangeForm}
-                name="form"
+                value={this.state.studentid}
+                onChange={this.onChangeStudentid}
+                name="studentid"
+              />
+            </div>
+            
+            <div className="form-group">
+              <label htmlFor="title">Title</label>
+              <input
+                type="text"
+                className="form-control"
+                id="title"
+                required
+                value={this.state.title}
+                onChange={this.onChangeTitle}
+                name="title"
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="graduationYear">Description</label>
+              <label htmlFor="comments">Comments</label>
               <input
                 type="text"
                 className="form-control"
-                id="graduationYear"
+                id="comments"
                 required
-                value={this.state.graduationYear}
-                onChange={this.onChangeGraduationYear}
-                name="graduationYear"
+                value={this.state.comments}
+                onChange={this.onChangeComments}
+                name="comments"
               />
             </div>
 
-            <button onClick={this.savestudent} className="btn btn-success">
-              Submit
-            </button>
+            <div className="form-group">
+              <label htmlFor="teacher">Teacher</label>
+              <textarea 
+                rows="3"
+                className="form-control"
+                id="teacher"
+                required
+                value={this.state.teacher}
+                onChange={this.onChangeTeacher}
+                name="teacher"
+              />
+            </div>
+
+            <div class="text-right">
+                <button onClick={this.saveReport} className="btn btn-success">
+                Submit
+                </button>
+            </div>
           </div>
         )}
       </div>
