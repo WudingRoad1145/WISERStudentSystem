@@ -3,7 +3,7 @@ import studentDataService from "../services/student.service";
 import Select from 'react-select';
 import { MDBContainer } from "mdbreact";
 import { Bar } from "react-chartjs-2";
-import Chart from 'chart.js/auto';
+//import Chart from 'chart.js/auto';
 import "./student.css";
 import studentChart from './studentChart.js';
 

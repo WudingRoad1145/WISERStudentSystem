@@ -2963,7 +2963,7 @@
     "chartjs-color" "^2.1.0"
     "moment" "^2.10.2"
 
-"chart.js@^3.5.0":
+"chart.js@^3.5.0", "chart.js@^3.8.0":
   "integrity" "sha512-cr8xhrXjLIXVLOBZPkBZVF6NDeiVIrPLHcMhnON7UufudL+CNeRrD+wpYanswlm8NpudMdrt3CHoLMQMxJhHRg=="
   "resolved" "https://registry.npmmirror.com/chart.js/-/chart.js-3.8.0.tgz"
   "version" "3.8.0"
