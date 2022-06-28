@@ -10,6 +10,8 @@ import teacherLogin from "./components/authentication";
 import addReport from "./components/addReport";
 import addActivity from "./components/addActivity";
 import addGraduate from "./components/addGraduate";
+import addScore from "./components/addScore";
+import addExam from "./components/addExam";
 import analytics from "./components/analytics";
 import add from "./components/add";
 
@@ -49,6 +51,8 @@ class App extends Component {
             <Route exact path="/addReport" component={addReport} />
             <Route exact path="/addActivity" component={addActivity} />
             <Route exact path="/addGraduate" component={addGraduate} />
+            <Route exact path="/addScore" component={addScore} />
+            <Route exact path="/addExam" component={addExam} />
             <Route path="/analytics" component={analytics} />
             <Route path="/students/:id" component={student} />
           </Switch>

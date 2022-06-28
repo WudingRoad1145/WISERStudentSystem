@@ -7,6 +7,8 @@ export default class addStudent extends Component {
     this.onChangename = this.onChangename.bind(this);
     this.onChangeForm = this.onChangeForm.bind(this);
     this.onChangeGraduationYear = this.onChangeGraduationYear.bind(this);
+    this.onChangeStudentClass = this.onChangeStudentClass.bind(this);
+    this.onChangeHouse = this.onChangeHouse.bind(this);
     this.savestudent = this.savestudent.bind(this);
     this.newstudent = this.newstudent.bind(this);
 
@@ -15,6 +17,8 @@ export default class addStudent extends Component {
       name: "",
       form: "", 
       graduationYear: "",
+      studentClass:"",
+      house:"",
       graduated: false,
       submitted: false
     };
@@ -38,11 +42,25 @@ export default class addStudent extends Component {
     });
   }
 
+  onChangeStudentClass(e) {
+    this.setState({
+      studentClass: e.target.value
+    });
+  }
+
+  onChangeHouse(e) {
+    this.setState({
+      house: e.target.value
+    });
+  }
+
   savestudent() {
     var data = {
       name: this.state.name,
       form: this.state.form,
-      graduationYear: this.state.graduationYear
+      graduationYear: this.state.graduationYear,
+      studentClass: this.state.studentClass,
+      house: this.state.house
     };
 
     studentDataService.create(data)
@@ -52,6 +70,8 @@ export default class addStudent extends Component {
           name: response.data.name,
           form: response.data.form,
           graduationYear: response.data.graduationYear,
+          studentClass: response.data.studentClass,
+          house: response.data.house,
           graduated: response.data.graduated,
 
           submitted: true
@@ -69,6 +89,8 @@ export default class addStudent extends Component {
       name: "",
       form: "",
       graduationYear: "",
+      studentClass:"",
+      house:"",
       graduated: false,
 
       submitted: false
@@ -123,6 +145,32 @@ export default class addStudent extends Component {
                 value={this.state.graduationYear}
                 onChange={this.onChangeGraduationYear}
                 name="graduationYear"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="studentClass">Class</label>
+              <input
+                type="text"
+                className="form-control"
+                id="studentClass"
+                required
+                value={this.state.studentClass}
+                onChange={this.onChangeStudentClass}
+                name="studentClass"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="house">House of Wisdom</label>
+              <input
+                type="text"
+                className="form-control"
+                id="house"
+                required
+                value={this.state.house}
+                onChange={this.onChangeHouse}
+                name="house"
               />
             </div>
 

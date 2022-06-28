@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import teacherDataService from "../services/teacher.service";
 import { Link } from "react-router-dom";
 import logo from './wiser.jpg';
+import "./authentication.css";
 
 
 export default class teacherLogin extends Component {
@@ -91,9 +92,9 @@ export default class teacherLogin extends Component {
         });
     }
   
-    /***                        <Link to={"/students"} className="badge badge-warning">
-                            Continue
-                        </Link> */
+    /***  <Link to={"/students"} className="badge badge-warning">
+    Continue
+    </Link> */
     render() {
         return (
             <div className="submit-form">
@@ -110,7 +111,9 @@ export default class teacherLogin extends Component {
                     </div>
                 ) : (
                 <div>
-                    <img src={logo} alt="logo" width="280" height="280" align='center'/>
+                    <div class="image-container">
+                        <img src={logo} alt="logo" width="280" height="280" align='center'/>
+                    </div>
                     <div className="form-group">
                         <label htmlFor="username">Username</label>
                         <input

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import studentDataService from "../services/student.service";
 import { Link } from "react-router-dom";
 import Select from 'react-select';
+import "../App.css";
 
 export default class StudentsList extends Component {
   constructor(props) {
@@ -12,13 +13,20 @@ export default class StudentsList extends Component {
     this.setActivestudent = this.setActivestudent.bind(this);
     this.removeAllstudents = this.removeAllstudents.bind(this);
     this.searchname = this.searchname.bind(this);
+    this.selectGraduationYear = this.selectGraduationYear.bind(this);
+    this.selectStudentClass = this.selectStudentClass.bind(this);
+    this.selectHouse = this.selectHouse.bind(this);
+    this.selectSubject = this.selectSubject.bind(this);
 
     this.state = {
       students: [],
       currentstudent: null,
       currentIndex: -1,
       searchname: "",
-      gradYear:""
+      gradYear:"",
+      studentClass:"",
+      subject:"",
+      house:""
     };
   }
 
@@ -111,6 +119,93 @@ export default class StudentsList extends Component {
       });
   }
 
+  selectStudentClass(value) {
+    console.log(this.state.studentClass);
+    this.setState({
+      currentstudent: null,
+      currentIndex: -1,
+    });
+
+    studentDataService.findByStudentClass(value["value"])
+      .then(response => {
+        this.setState({
+          students: response.data
+        });
+        console.log(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }
+
+  selectHouse(value) {
+    console.log(this.state.house);
+    this.setState({
+      currentstudent: null,
+      currentIndex: -1,
+    });
+
+    studentDataService.findByHouse(value["value"])
+      .then(response => {
+        this.setState({
+          students: response.data
+        });
+        console.log(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }
+
+
+  selectSubject(option) {
+    this.setState(state => {
+      return {
+        subject: option
+      };
+    });
+    console.log(option);
+  }
+
+  /** 
+  selectSubject(value) {
+    console.log(this.state.subject);
+    console.log(value);
+    this.setState({
+      currentstudent: null,
+      currentIndex: -1,
+    });
+
+    studentDataService.findBySubject(value["value"])
+      .then(response => {
+        this.setState({
+          students: response.data
+        });
+        console.log(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }
+*/
+
+selectGraduate(value) {
+  this.setState({
+    currentstudent: null,
+    currentIndex: -1,
+  });
+
+  studentDataService.findByGraduate(value["value"])
+    .then(response => {
+      this.setState({
+        students: response.data
+      });
+      console.log(response.data);
+    })
+    .catch(e => {
+      console.log(e);
+    });
+}
 
   render() {
     const { searchname, students, currentstudent, currentIndex } = this.state;
@@ -122,24 +217,28 @@ export default class StudentsList extends Component {
       { value: '2025', label: '2025' }
     ]
     const s_Class = [
-      { value: 'All Class', label: 'All Class' },
+      { value: '', label: 'All Class' },
       { value: 'Prime', label: 'Prime' },
       { value: 'Royal', label: 'Royal' },
       { value: 'Imperial', label: 'Imperial' }
     ]
     const s_Subject = [
-      { value: 'All Subject', label: 'All Subject' },
+      { value: '', label: 'All Subject' },
       { value: 'Math', label: 'Math' },
       { value: 'English', label: 'English' },
       { value: 'Kiswahili', label: 'Kiswahili' },
       { value: 'Physics', label: 'Physics' }
     ]
     const s_House = [
-      { value: 'All House', label: 'All House' },
+      { value: '', label: 'All House' },
       { value: 'Mirror', label: 'Mirror' },
       { value: 'Savvy', label: 'Savvy' },
       { value: 'Noble', label: 'Noble' },
       { value: 'Competent', label: 'Competent' }
+    ]
+    const s_Term = [
+      { value: '202201', label: '202201' },
+      { value: '202103', label: '202103' }
     ]
 
     return (
@@ -156,27 +255,70 @@ export default class StudentsList extends Component {
               />
             </div>
             <div id="root">
-              <Select className="mt-4" label="class" defaultInputValue="All Class" options={s_Class} />
+              <Select className="mt-4" label="studentClass" defaultInputValue="All Class" options={s_Class} 
+                onChange={value=>this.selectStudentClass(value)}
+                allowClear
+              />
             </div>
             <div id="root">
-              <Select className="mt-4" label="subject" defaultInputValue="All Subject" options={s_Subject} />
+              <Select className="mt-4" label="house" defaultInputValue="All House" options={s_House}
+                onChange={value=>this.selectHouse(value)}
+                allowClear
+              />
+            </div>
+            <p></p>
+            <div id="root">
+              <Select
+                isMulti
+                name="subjects"
+                defaultInputValue="All Subject"
+                options={s_Subject}
+                className="basic-multi-select"
+                classNamePrefix="select"
+                onChange={value=>this.selectStudentClass(value)}
+              />
             </div>
             <div id="root">
-              <Select className="mt-4" label="house" defaultInputValue="All House" options={s_House} />
+              <label>
+                <input
+                  type="checkbox"
+                  checked={this.state.graduated}
+                  //onChange={selectGraduate}
+                />
+                Graduated
+              </label>
             </div>
-          </div>
-          <Link
-            to={"/addStudents"}
-            className="m-3 btn btn-sm btn-danger"
-          >
-            Add Student
-          </Link>
-          <button
+            <br></br>
+            <br></br>
+            <div id="root">
+              <Select
+                name="term"
+                defaultInputValue="202201"
+                options={s_Term}
+                className="basic-multi-select"
+                classNamePrefix="select"
+                //onChange={value=>this.selectStudentClass(value)}
+              />
+            </div>
+            <button
                 className="m-3 btn btn-sm btn-danger"
-                onClick={this.removeAllstudents}
+                //onClick={this.removeAllstudents}
               >
-                Remove All
-          </button>
+                Generate Report
+            </button>
+              <Link
+              to={"/addStudents"}
+              className="m-3 btn btn-sm btn-danger"
+            >
+              Add Student
+            </Link>
+            <button
+                  className="m-3 btn btn-sm btn-danger"
+                  //onClick={this.removeAllstudents}
+                >
+                  Remove All
+            </button>
+          </div>
         </div>
 
         <div className="col-md-10">
@@ -216,7 +358,7 @@ export default class StudentsList extends Component {
                       onClick={() => this.setActivestudent(student, index)}
                       key={index}
                     >
-                      {student.id} {student.name} Form:{student.form} {student.graduationYear}
+                      {student.id} {student.name} Form:{student.form} {student.studentClass} {student.graduationYear}
                     </li>
                   ))}
               </ul>
@@ -261,7 +403,7 @@ export default class StudentsList extends Component {
                     to={"/students/" + currentstudent.id}
                     className="btn btn-outline-primary"
                   >
-                    More
+                    View Performance
                   </Link>
                 </div>
               ) : (

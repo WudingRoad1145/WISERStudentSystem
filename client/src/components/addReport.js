@@ -101,7 +101,7 @@ export default class addReport extends Component {
             <h4>Teacher's report added successfully!</h4>
             <h4>Thank you, teacher!</h4>
             <button className="btn btn-success" onClick={this.newReport}>
-              Add
+              Add Another
             </button>
           </div>
         ) : (
@@ -150,8 +150,8 @@ export default class addReport extends Component {
 
             <div className="form-group">
               <label htmlFor="comments">Comments</label>
-              <input
-                type="text"
+              <textarea
+                rows="3"
                 className="form-control"
                 id="comments"
                 required
@@ -163,8 +163,8 @@ export default class addReport extends Component {
 
             <div className="form-group">
               <label htmlFor="teacher">Teacher</label>
-              <textarea 
-                rows="3"
+              <input
+                type="text"
                 className="form-control"
                 id="teacher"
                 required

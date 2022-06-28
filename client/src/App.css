@@ -5,7 +5,7 @@
 }
 
 .submit-form {
-  max-width: 300px;
+  max-width: 600px;
   margin: auto;
 }
 
@@ -33,7 +33,18 @@
     max-width: 5000px;
   }
 
+  .row{
+    margin-right:-200px;
+  }
 
-  .submit-form{
-    max-width:600px;
+  .css-1s2u09g-control{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top:0px;
+    margin-bottom: 20px;
+    padding:0px;
+  }
+
+  .container{
+    padding:0px;
   }

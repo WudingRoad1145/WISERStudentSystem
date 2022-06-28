@@ -32,6 +32,18 @@ class studentDataService {
   findByGraduationYear(year) {
     return http.get(`/students?graduationYear=${year}`);
   }
+
+  findByStudentClass(student_class) {
+    return http.get(`/students?studentClass=${student_class}`);
+  }
+
+  findByHouse(house) {
+    return http.get(`/students?house=${house}`);
+  }
+
+  findBySubject(subject) {
+    return http.get(`/students?subject=${subject}`);
+  }
 }
 
 export default new studentDataService();

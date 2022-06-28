@@ -112,10 +112,10 @@ export default class addActivity extends Component {
             <h4>Activity record added successfully!</h4>
             <h4>Thank you, teacher!</h4>
             <button className="btn btn-success" onClick={this.newReport}>
-              Add
+              Add Another
             </button>
           </div>
-        ) : (
+          ) : (
           <div>
             <h3 htmlFor="activity">Activity</h3>
             <div className="form-group">
