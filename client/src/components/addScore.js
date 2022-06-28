@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import studentDataService from "../services/student.service";
 //import examDataService from "../services/exam.service";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import Select from 'react-select';
 import BootstrapTable from 'react-bootstrap-table-next';
 import cellEditFactory from 'react-bootstrap-table2-editor';
@@ -210,7 +210,8 @@ selectGraduate(value) {
 }
 
   render() {
-    const { searchname, students, currentstudent, currentIndex } = this.state;
+    const { searchname, students, } = this.state;
+    //currentstudent, currentIndex 
     const s_GraduationYear = [
       { value: '', label: 'All Year' },
       { value: '2022', label: '2022' },
@@ -230,13 +231,6 @@ selectGraduate(value) {
       { value: 'English', label: 'English' },
       { value: 'Kiswahili', label: 'Kiswahili' },
       { value: 'Physics', label: 'Physics' }
-    ]
-    const s_House = [
-      { value: 'All House', label: 'All House' },
-      { value: 'Mirror', label: 'Mirror' },
-      { value: 'Savvy', label: 'Savvy' },
-      { value: 'Noble', label: 'Noble' },
-      { value: 'Competent', label: 'Competent' }
     ]
 
     const columns = [{
