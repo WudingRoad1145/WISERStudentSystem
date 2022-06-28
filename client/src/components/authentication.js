@@ -103,8 +103,8 @@ export default class teacherLogin extends Component {
                         <h2>Kalibu, Teacher!</h2>
                         <p>Education is life.</p>
                         <Link
-                            to={"/students"}
-                            className="badge badge-warning"
+                            to={"/students/" + currentstudent.id}
+                            className="btn btn-outline-primary"
                         >
                             Continue
                         </Link>
