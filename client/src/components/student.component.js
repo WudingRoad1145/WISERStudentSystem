@@ -3,7 +3,7 @@ import studentDataService from "../services/student.service";
 import Select from 'react-select';
 import { MDBContainer } from "mdbreact";
 import { Bar } from "react-chartjs-2";
-import Chart from 'chart.js/auto';
+import 'chart.js/auto';
 import "./student.css";
 //import studentChart from './studentChart.js';
 
@@ -558,7 +558,7 @@ export default class Student extends Component {
                   <MDBContainer>
                     <Bar data={data} options={option}/>
                   </MDBContainer>
-                  <Chart/>
+                  
             </div>
           </div>
         </div>
